@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Count nodes
+int countNodes(struct Node* head) {
+    int count = 0;
+
+    while(head != NULL) {
+        count++;
+        head = head->next;
+    }
+
+    return count;
+}
+
+// Insert at end (helper)
+struct Node* insertAtEnd(struct Node* head, int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+
+    if(head == NULL) return newNode;
+
+    struct Node* temp = head;
+    while(temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+
+    return head;
+}
+
+int main() {
+    struct Node* head = NULL;
+
+    head = insertAtEnd(head, 10);
+    head = insertAtEnd(head, 20);
+    head = insertAtEnd(head, 30);
+
+    printf("Number of nodes: %d\n", countNodes(head));
+
+    return 0;
+}
