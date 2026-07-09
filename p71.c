@@ -49,6 +49,7 @@ void display(struct Node *head){
 // Insert after given node value
 void insertAfterNode(struct Node **head,int key,int value){
 
+    struct Node *newNode=createNode(value);
     struct Node *temp=*head;
 
     while(temp!=NULL && temp->data!=key)
@@ -59,7 +60,7 @@ void insertAfterNode(struct Node **head,int key,int value){
         return;
     }
 
-    struct Node *newNode=createNode(value);
+    
 
     newNode->next=temp->next;
     newNode->prev=temp;
