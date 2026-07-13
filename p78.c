@@ -59,49 +59,32 @@ void display(struct Node *head)
     printf("\n");
 }
 
-void deleteAll(struct Node **head,int key)
+void deleteEntireList(struct Node **head)
 {
     struct Node *temp=*head;
 
     while(temp!=NULL)
     {
-        if(temp->data==key)
-        {
-            temp=temp->next;
-
-            if(temp->prev!=NULL)
-                temp->prev->next=temp->next;
-            else
-                *head=temp->next;
-
-            if(temp->next!=NULL)
-                temp->next->prev=temp->prev;
-
-            free(temp);
-
-            temp=temp->next; //nextNode
-        }
-        else
-            temp=temp->next;
+        
+        free(temp);
+        temp=temp->next;
     }
+
+    *head=NULL;
 }
 
 int main()
 {
     struct Node *head=NULL;
-    int key;
 
     createList(&head);
 
     printf("Original List:\n");
     display(head);
 
-    printf("Enter value to delete: ");
-    scanf("%d",&key);
+    deleteEntireList(&head);
 
-    deleteAll(&head,key);
-
-    printf("Updated List:\n");
+    printf("After deleting entire list:\n");
     display(head);
 
     return 0;
