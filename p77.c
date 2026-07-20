@@ -67,7 +67,7 @@ void deleteAll(struct Node **head,int key)
     {
         if(temp->data==key)
         {
-            temp=temp->next;
+            struct Node *nextNode=temp->next;
 
             if(temp->prev!=NULL)
                 temp->prev->next=temp->next;
@@ -79,7 +79,7 @@ void deleteAll(struct Node **head,int key)
 
             free(temp);
 
-            temp=temp->next; //nextNode
+            temp=nextNode;
         }
         else
             temp=temp->next;
