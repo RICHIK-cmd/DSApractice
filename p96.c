@@ -38,9 +38,6 @@ struct Node *createList(int n)
 
 void display(struct Node *head)
 {
-    if(head==NULL)
-        return;
-
     struct Node *temp=head;
 
     do
@@ -53,7 +50,7 @@ void display(struct Node *head)
     printf("\n");
 }
 
-struct Node* insertBeginning(struct Node *head,int value)
+struct Node* insertEnd(struct Node *head,int value)
 {
     struct Node *newNode=(struct Node*)malloc(sizeof(struct Node));
     newNode->data=value;
@@ -69,9 +66,8 @@ struct Node* insertBeginning(struct Node *head,int value)
     while(last->next!=head)
         last=last->next;
 
-    newNode->next=head;
     last->next=newNode;
-    head=newNode;
+    newNode->next=head;
 
     return head;
 }
@@ -89,7 +85,7 @@ int main()
     printf("Enter value: ");
     scanf("%d",&value);
 
-    head=insertBeginning(head,value);
+    head=insertEnd(head,value);
 
     display(head);
 
