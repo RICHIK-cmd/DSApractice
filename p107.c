@@ -75,7 +75,7 @@ struct Node* updateValue(struct Node *head, int oldValue, int newValue)
         {
             temp->data = newValue;
             printf("Value Updated Successfully.\n");
-            return head;
+            
         }
 
         temp = temp->next;
